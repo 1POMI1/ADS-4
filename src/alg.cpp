@@ -34,7 +34,6 @@ int countPairs2(int* arr, int len, int value) {
     return count;
 }
 
-
 #include <algorithm>
 
 int countPairs3(int* arr, int len, int value) {
@@ -42,7 +41,7 @@ int countPairs3(int* arr, int len, int value) {
     for (int i = 0; i < len - 1; ++i) {
         if (i > 0 && arr[i] == arr[i - 1]) continue;
         int target = value - arr[i];
-        int* pos = std::lower_bound(arr + i + 1, arr + len, target);
+        const int* pos = std::lower_bound(arr + i + 1, arr + len, target);
         if (pos != arr + len && *pos == target) {
             if (pos == arr + i + 1 || *(pos - 1) != target) {
                 ++count;
